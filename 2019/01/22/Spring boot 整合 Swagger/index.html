@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
+    <meta charset="utf-8">
+<title>Spring boot 整合 Swagger - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <title>Spring boot 整合 Swagger | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文github位置：https://github.com/WillVi/springboot-swagger2-demo环境准备 JDK版本：1.8 Spring boot版本：1.5.16 Swagger及其Swagger-ui版本：2.6.1（关于swagger-ui版本 每个版本的汉化方式可能有不同） 默认url：http://localhost:8080/swagger-ui.html">
+
+
+    <meta name="description" content="本文github位置：https://github.com/WillVi/springboot-swagger2-demo环境准备 JDK版本：1.8 Spring boot版本：1.5.16 Swagger及其Swagger-ui版本：2.6.1（关于swagger-ui版本 每个版本的汉化方式可能有不同） 默认url：http://localhost:8080/swagger-ui.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring boot 整合 Swagger">
 <meta property="og:url" content="http://yoursite.com/2019/01/22/Spring boot 整合 Swagger/index.html">
@@ -18,230 +18,884 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring boot 整合 Swagger">
 <meta name="twitter:description" content="本文github位置：https://github.com/WillVi/springboot-swagger2-demo环境准备 JDK版本：1.8 Spring boot版本：1.5.16 Swagger及其Swagger-ui版本：2.6.1（关于swagger-ui版本 每个版本的汉化方式可能有不同） 默认url：http://localhost:8080/swagger-ui.html">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-</html>
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-Spring boot 整合 Swagger" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/22/Spring boot 整合 Swagger/" class="article-date">
-  <time datetime="2019-01-22T14:56:32.000Z" itemprop="datePublished">2019-01-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Spring boot 整合 Swagger
-    </h1>
-  
 
-      </header>
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="本文github位置：https-github-com-WillVi-springboot-swagger2-demo"><a href="#本文github位置：https-github-com-WillVi-springboot-swagger2-demo" class="headerlink" title="本文github位置：https://github.com/WillVi/springboot-swagger2-demo"></a>本文github位置：<a href="https://github.com/WillVi/springboot-swagger2-demo" target="_blank" rel="noopener">https://github.com/WillVi/springboot-swagger2-demo</a></h4><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ol>
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Spring boot 整合 Swagger" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-01-22T14:56:32.000Z">2019-01-22</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 minutes read (About 1500 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Spring boot 整合 Swagger
+            
+        </h1>
+        <div class="content">
+            <h4 id="本文github位置：https-github-com-WillVi-springboot-swagger2-demo"><a href="#本文github位置：https-github-com-WillVi-springboot-swagger2-demo" class="headerlink" title="本文github位置：https://github.com/WillVi/springboot-swagger2-demo"></a>本文github位置：<a href="https://github.com/WillVi/springboot-swagger2-demo" target="_blank" rel="noopener">https://github.com/WillVi/springboot-swagger2-demo</a></h4><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ol>
 <li>JDK版本：1.8</li>
 <li>Spring boot版本：1.5.16</li>
 <li>Swagger及其Swagger-ui版本：2.6.1（关于swagger-ui版本 每个版本的汉化方式可能有不同）</li>
 <li>默认url：<a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener">http://localhost:8080/swagger-ui.html</a></li>
 </ol>
-<h2 id="Maven依赖"><a href="#Maven依赖" class="headerlink" title="Maven依赖"></a>Maven依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- swagge2 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- swaggerui用于展示swagger页面 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Maven依赖"><a href="#Maven依赖" class="headerlink" title="Maven依赖"></a>Maven依赖</h2><figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">&lt;!-- swagge2 --&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.springfox<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springfox-swagger2<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.6.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span><br><span class="line"><span class="hljs-comment">&lt;!-- swaggerui用于展示swagger页面 --&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.springfox<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.6.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h3><p>swagger-ui依赖 有可能会与<code>com.google.guava</code>冲突 提供一个解决办法:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 将冲突包移除 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.guava<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>guava<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableSwagger</span>2</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Swagger2Config</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">api</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 统一设置返回描述</span></span><br><span class="line">        List&lt;ResponseMessage&gt; responseMessages = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        responseMessages.add(<span class="keyword">new</span> ResponseMessageBuilder().code(<span class="number">400</span>).message(<span class="string">"请求参数有误"</span>).build());</span><br><span class="line">        responseMessages.add(<span class="keyword">new</span> ResponseMessageBuilder().code(<span class="number">401</span>).message(<span class="string">"未授权"</span>).build());</span><br><span class="line">        responseMessages.add(<span class="keyword">new</span> ResponseMessageBuilder().code(<span class="number">403</span>).message(<span class="string">"禁止访问"</span>).build());</span><br><span class="line">        responseMessages.add(<span class="keyword">new</span> ResponseMessageBuilder().code(<span class="number">404</span>).message(<span class="string">"请求路径不存在"</span>).build());</span><br><span class="line">        responseMessages.add(<span class="keyword">new</span> ResponseMessageBuilder().code(<span class="number">500</span>).message(<span class="string">"服务器内部错误"</span>).responseModel(<span class="keyword">new</span> ModelRef(<span class="string">"string"</span>)).build());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                <span class="comment">// 禁用默认返回描述</span></span><br><span class="line">                .useDefaultResponseMessages(<span class="keyword">false</span>)</span><br><span class="line">                <span class="comment">// 启用新的返回描述</span></span><br><span class="line">                .globalResponseMessage(RequestMethod.GET, responseMessages)</span><br><span class="line">                .globalResponseMessage(RequestMethod.POST, responseMessages)</span><br><span class="line">                .globalResponseMessage(RequestMethod.PATCH, responseMessages)</span><br><span class="line">                .globalResponseMessage(RequestMethod.PUT, responseMessages)</span><br><span class="line">                .globalResponseMessage(RequestMethod.DELETE, responseMessages)</span><br><span class="line">                <span class="comment">// 设置基本信息</span></span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .select()</span><br><span class="line">                <span class="comment">// 设置哪些api被扫描</span></span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(<span class="string">"cn.willvi.springbootswaggerdemo"</span>))</span><br><span class="line">                <span class="comment">// 设置路径</span></span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置基本信息</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ApiInfo <span class="title">apiInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder()</span><br><span class="line">                <span class="comment">// 标题</span></span><br><span class="line">                .title(<span class="string">"我的接口文档"</span>)</span><br><span class="line">            	<span class="comment">// 描述</span></span><br><span class="line">                .description(<span class="string">"这是我的第一个接口文档"</span>)</span><br><span class="line">            	<span class="comment">// 版本号</span></span><br><span class="line">                .version(<span class="string">"1.0"</span>)</span><br><span class="line">                <span class="comment">// 项目的链接</span></span><br><span class="line">                .termsOfServiceUrl(<span class="string">""</span>)</span><br><span class="line">                <span class="comment">// 作者</span></span><br><span class="line">                .license(<span class="string">"willvi"</span>)</span><br><span class="line">                .licenseUrl(<span class="string">""</span>)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.springfox<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.2.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span></span><br><span class="line">    <span class="hljs-comment">&lt;!-- 将冲突包移除 --&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.google.guava<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>guava<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">exclusions</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Configuration</span></span><br><span class="line"><span class="hljs-meta">@EnableSwagger</span>2</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Swagger2Config</span> </span>&#123;</span><br><span class="line">    <span class="hljs-meta">@Bean</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> Docket <span class="hljs-title">api</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">// 统一设置返回描述</span></span><br><span class="line">        List&lt;ResponseMessage&gt; responseMessages = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        responseMessages.add(<span class="hljs-keyword">new</span> ResponseMessageBuilder().code(<span class="hljs-number">400</span>).message(<span class="hljs-string">"请求参数有误"</span>).build());</span><br><span class="line">        responseMessages.add(<span class="hljs-keyword">new</span> ResponseMessageBuilder().code(<span class="hljs-number">401</span>).message(<span class="hljs-string">"未授权"</span>).build());</span><br><span class="line">        responseMessages.add(<span class="hljs-keyword">new</span> ResponseMessageBuilder().code(<span class="hljs-number">403</span>).message(<span class="hljs-string">"禁止访问"</span>).build());</span><br><span class="line">        responseMessages.add(<span class="hljs-keyword">new</span> ResponseMessageBuilder().code(<span class="hljs-number">404</span>).message(<span class="hljs-string">"请求路径不存在"</span>).build());</span><br><span class="line">        responseMessages.add(<span class="hljs-keyword">new</span> ResponseMessageBuilder().code(<span class="hljs-number">500</span>).message(<span class="hljs-string">"服务器内部错误"</span>).responseModel(<span class="hljs-keyword">new</span> ModelRef(<span class="hljs-string">"string"</span>)).build());</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                <span class="hljs-comment">// 禁用默认返回描述</span></span><br><span class="line">                .useDefaultResponseMessages(<span class="hljs-keyword">false</span>)</span><br><span class="line">                <span class="hljs-comment">// 启用新的返回描述</span></span><br><span class="line">                .globalResponseMessage(RequestMethod.GET, responseMessages)</span><br><span class="line">                .globalResponseMessage(RequestMethod.POST, responseMessages)</span><br><span class="line">                .globalResponseMessage(RequestMethod.PATCH, responseMessages)</span><br><span class="line">                .globalResponseMessage(RequestMethod.PUT, responseMessages)</span><br><span class="line">                .globalResponseMessage(RequestMethod.DELETE, responseMessages)</span><br><span class="line">                <span class="hljs-comment">// 设置基本信息</span></span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .select()</span><br><span class="line">                <span class="hljs-comment">// 设置哪些api被扫描</span></span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(<span class="hljs-string">"cn.willvi.springbootswaggerdemo"</span>))</span><br><span class="line">                <span class="hljs-comment">// 设置路径</span></span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 设置基本信息</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> ApiInfo <span class="hljs-title">apiInfo</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ApiInfoBuilder()</span><br><span class="line">                <span class="hljs-comment">// 标题</span></span><br><span class="line">                .title(<span class="hljs-string">"我的接口文档"</span>)</span><br><span class="line">            	<span class="hljs-comment">// 描述</span></span><br><span class="line">                .description(<span class="hljs-string">"这是我的第一个接口文档"</span>)</span><br><span class="line">            	<span class="hljs-comment">// 版本号</span></span><br><span class="line">                .version(<span class="hljs-string">"1.0"</span>)</span><br><span class="line">                <span class="hljs-comment">// 项目的链接</span></span><br><span class="line">                .termsOfServiceUrl(<span class="hljs-string">""</span>)</span><br><span class="line">                <span class="hljs-comment">// 作者</span></span><br><span class="line">                .license(<span class="hljs-string">"willvi"</span>)</span><br><span class="line">                .licenseUrl(<span class="hljs-string">""</span>)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Swagger注解详解"><a href="#Swagger注解详解" class="headerlink" title="Swagger注解详解"></a>Swagger注解详解</h2><h3 id="Api-设置Controller整体信息"><a href="#Api-设置Controller整体信息" class="headerlink" title="@Api 设置Controller整体信息"></a>@Api 设置Controller整体信息</h3><p>注解位置：Controller类上</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * value                 url路径值（汉化后不起作用） http://xxx/swagger-ui.html#/demo-controller中的 demo-controller即为value</span></span><br><span class="line"><span class="comment"> * tags                  设置这个值、value的值会被覆盖（汉化后有bug最好不写）</span></span><br><span class="line"><span class="comment"> * description           对api资源的描述</span></span><br><span class="line"><span class="comment"> * basePath              基本路径可以不配置</span></span><br><span class="line"><span class="comment"> * position              如果配置多个Api 想改变显示的顺序位置</span></span><br><span class="line"><span class="comment"> * produces              例如, "application/json, application/xml"  页面上的 Response Content Type (响应Content Type) 约束响应资源的表现形式</span></span><br><span class="line"><span class="comment"> * consumes              例如, "application/json, application/xml" 请求资源的表现形式</span></span><br><span class="line"><span class="comment"> * protocols             Possible values: http, https, ws, wss.</span></span><br><span class="line"><span class="comment"> * authorizations        高级特性认证时配置</span></span><br><span class="line"><span class="comment"> * hidden                配置为true 将在文档中隐藏</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Api</span>(value = <span class="string">"Swagger 注解使用"</span>,description = <span class="string">"123"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * value                 url路径值（汉化后不起作用） http://xxx/swagger-ui.html#/demo-controller中的 demo-controller即为value</span></span><br><span class="line"><span class="hljs-comment"> * tags                  设置这个值、value的值会被覆盖（汉化后有bug最好不写）</span></span><br><span class="line"><span class="hljs-comment"> * description           对api资源的描述</span></span><br><span class="line"><span class="hljs-comment"> * basePath              基本路径可以不配置</span></span><br><span class="line"><span class="hljs-comment"> * position              如果配置多个Api 想改变显示的顺序位置</span></span><br><span class="line"><span class="hljs-comment"> * produces              例如, "application/json, application/xml"  页面上的 Response Content Type (响应Content Type) 约束响应资源的表现形式</span></span><br><span class="line"><span class="hljs-comment"> * consumes              例如, "application/json, application/xml" 请求资源的表现形式</span></span><br><span class="line"><span class="hljs-comment"> * protocols             Possible values: http, https, ws, wss.</span></span><br><span class="line"><span class="hljs-comment"> * authorizations        高级特性认证时配置</span></span><br><span class="line"><span class="hljs-comment"> * hidden                配置为true 将在文档中隐藏</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@Api</span>(value = <span class="hljs-string">"Swagger 注解使用"</span>,description = <span class="hljs-string">"123"</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="ApiOperation-设置每个方法（接口）信息"><a href="#ApiOperation-设置每个方法（接口）信息" class="headerlink" title="@ApiOperation 设置每个方法（接口）信息"></a>@ApiOperation 设置每个方法（接口）信息</h3><p>注解位置：方法上</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * value               页面tab右侧值</span></span><br><span class="line"><span class="comment">   * tags                如果设置这个值、value的值会被覆盖</span></span><br><span class="line"><span class="comment">   * description         对api资源的描述</span></span><br><span class="line"><span class="comment">   * basePath            基本路径可以不配置</span></span><br><span class="line"><span class="comment">   * position            如果配置多个Api 想改变显示的顺序位置</span></span><br><span class="line"><span class="comment">   * produces            例如, "application/json, application/xml"</span></span><br><span class="line"><span class="comment">   * consumes            例如, "application/json, application/xml"</span></span><br><span class="line"><span class="comment">   * protocols           Possible values: http, https, ws, wss.</span></span><br><span class="line"><span class="comment">   * authorizations      高级特性认证时配置</span></span><br><span class="line"><span class="comment">   * hidden              配置为true 将在文档中隐藏</span></span><br><span class="line"><span class="comment">   * response            返回的对象</span></span><br><span class="line"><span class="comment">   * responseContainer   这些对象是有效的 "List", "Set" or "Map".，其他无效</span></span><br><span class="line"><span class="comment">   * httpMethod  "GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS" and "PATCH"</span></span><br><span class="line"><span class="comment">   * code                http的状态码 默认 200</span></span><br><span class="line"><span class="comment">   * extensions          扩展属性</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">   <span class="meta">@ApiOperation</span>(</span><br><span class="line">          value = <span class="string">"post"</span>,</span><br><span class="line">          notes = <span class="string">"这是一个小demo"</span>,</span><br><span class="line">          produces = <span class="string">"application/json"</span>,</span><br><span class="line">          response = Person.class</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">   * value               页面tab右侧值</span></span><br><span class="line"><span class="hljs-comment">   * tags                如果设置这个值、value的值会被覆盖</span></span><br><span class="line"><span class="hljs-comment">   * description         对api资源的描述</span></span><br><span class="line"><span class="hljs-comment">   * basePath            基本路径可以不配置</span></span><br><span class="line"><span class="hljs-comment">   * position            如果配置多个Api 想改变显示的顺序位置</span></span><br><span class="line"><span class="hljs-comment">   * produces            例如, "application/json, application/xml"</span></span><br><span class="line"><span class="hljs-comment">   * consumes            例如, "application/json, application/xml"</span></span><br><span class="line"><span class="hljs-comment">   * protocols           Possible values: http, https, ws, wss.</span></span><br><span class="line"><span class="hljs-comment">   * authorizations      高级特性认证时配置</span></span><br><span class="line"><span class="hljs-comment">   * hidden              配置为true 将在文档中隐藏</span></span><br><span class="line"><span class="hljs-comment">   * response            返回的对象</span></span><br><span class="line"><span class="hljs-comment">   * responseContainer   这些对象是有效的 "List", "Set" or "Map".，其他无效</span></span><br><span class="line"><span class="hljs-comment">   * httpMethod  "GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS" and "PATCH"</span></span><br><span class="line"><span class="hljs-comment">   * code                http的状态码 默认 200</span></span><br><span class="line"><span class="hljs-comment">   * extensions          扩展属性</span></span><br><span class="line"><span class="hljs-comment">   */</span></span><br><span class="line">   <span class="hljs-meta">@ApiOperation</span>(</span><br><span class="line">          value = <span class="hljs-string">"post"</span>,</span><br><span class="line">          notes = <span class="hljs-string">"这是一个小demo"</span>,</span><br><span class="line">          produces = <span class="hljs-string">"application/json"</span>,</span><br><span class="line">          response = Person.class</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
 <h3 id="ApiImplicitParams-与-ApiImplicitParam-设置传入参数信息"><a href="#ApiImplicitParams-与-ApiImplicitParam-设置传入参数信息" class="headerlink" title="@ApiImplicitParams 与 @ApiImplicitParam 设置传入参数信息"></a>@ApiImplicitParams 与 @ApiImplicitParam 设置传入参数信息</h3><p>注解位置：方法上</p>
 <p>注意事项： <strong>name必须与参数名相同，不然多出一个参数框</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ApiImplicitParam</span></span></span><br><span class="line"><span class="comment"> * 当dataType不是对象时可以使用</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * paramType：参数放在哪个地方 path,query,heard,body,from</span></span><br><span class="line"><span class="comment"> * name：参数代表的含义</span></span><br><span class="line"><span class="comment"> * value：参数名称</span></span><br><span class="line"><span class="comment"> * dataType： 参数类型，有String/int，无用</span></span><br><span class="line"><span class="comment"> * required ： 是否必要</span></span><br><span class="line"><span class="comment"> * defaultValue：参数的默认值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@ApiImplicitParams</span>(</span><br><span class="line">        <span class="meta">@ApiImplicitParam</span>(name = <span class="string">"name"</span>,value = <span class="string">"name"</span>,paramType =<span class="string">"path"</span>, dataType = <span class="string">"String"</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@ApiImplicitParam</span></span></span><br><span class="line"><span class="hljs-comment"> * 当dataType不是对象时可以使用</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * paramType：参数放在哪个地方 path,query,heard,body,from</span></span><br><span class="line"><span class="hljs-comment"> * name：参数代表的含义</span></span><br><span class="line"><span class="hljs-comment"> * value：参数名称</span></span><br><span class="line"><span class="hljs-comment"> * dataType： 参数类型，有String/int，无用</span></span><br><span class="line"><span class="hljs-comment"> * required ： 是否必要</span></span><br><span class="line"><span class="hljs-comment"> * defaultValue：参数的默认值</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@ApiImplicitParams</span>(</span><br><span class="line">        <span class="hljs-meta">@ApiImplicitParam</span>(name = <span class="hljs-string">"name"</span>,value = <span class="hljs-string">"name"</span>,paramType =<span class="hljs-string">"path"</span>, dataType = <span class="hljs-string">"String"</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <h3 id="ApiResponses-设置返回的一些状态码信息"><a href="#ApiResponses-设置返回的一些状态码信息" class="headerlink" title="@ApiResponses 设置返回的一些状态码信息"></a>@ApiResponses 设置返回的一些状态码信息</h3><p>注解位置：方法上</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * code                http的状态码</span></span><br><span class="line"><span class="comment">     * message             描述</span></span><br><span class="line"><span class="comment">     * response            默认响应类 Void</span></span><br><span class="line"><span class="comment">     * reference           参考ApiOperation中配置</span></span><br><span class="line"><span class="comment">     * responseHeaders     参考 ResponseHeader 属性配置说明</span></span><br><span class="line"><span class="comment">     * responseContainer   参考ApiOperation中配置</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"><span class="meta">@ApiResponses</span>(&#123;<span class="meta">@ApiResponse</span>(code = <span class="number">500</span>, message = <span class="string">"服务器内部错误"</span>, response = String.class)&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * code                http的状态码</span></span><br><span class="line"><span class="hljs-comment">     * message             描述</span></span><br><span class="line"><span class="hljs-comment">     * response            默认响应类 Void</span></span><br><span class="line"><span class="hljs-comment">     * reference           参考ApiOperation中配置</span></span><br><span class="line"><span class="hljs-comment">     * responseHeaders     参考 ResponseHeader 属性配置说明</span></span><br><span class="line"><span class="hljs-comment">     * responseContainer   参考ApiOperation中配置</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line"><span class="hljs-meta">@ApiResponses</span>(&#123;<span class="hljs-meta">@ApiResponse</span>(code = <span class="hljs-number">500</span>, message = <span class="hljs-string">"服务器内部错误"</span>, response = String.class)&#125;)</span><br></pre></td></tr></table></figure>
 <h3 id="ApiModel"><a href="#ApiModel" class="headerlink" title="@ApiModel"></a>@ApiModel</h3><p>描述一个Model的信息（这种一般用在post创建的时候，使用@RequestBody这样的场景，请求参数无法使用@ApiImplicitParam注解进行描述的时候</p>
 <p>注解位置：实体类上</p>
 <h4 id="ApiModelProperty"><a href="#ApiModelProperty" class="headerlink" title="@ApiModelProperty"></a>@ApiModelProperty</h4><p>描述一个model的属性。</p>
 <p>注解位置：实体类每个属性上面</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ApiModelProperty</span>(value = <span class="string">"姓名"</span>,name = <span class="string">"name"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@ApiModelProperty</span>(value = <span class="hljs-string">"姓名"</span>,name = <span class="hljs-string">"name"</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="ApiParam"><a href="#ApiParam" class="headerlink" title="@ApiParam"></a>@ApiParam</h3><p>注解位置：方法参数内</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * name	属性名称</span></span><br><span class="line"><span class="comment">    * value	属性值</span></span><br><span class="line"><span class="comment">    * defaultValue	默认属性值</span></span><br><span class="line"><span class="comment">    * allowableValues	可以不配置</span></span><br><span class="line"><span class="comment">    * required	是否属性必填</span></span><br><span class="line"><span class="comment">    * access	不过多描述</span></span><br><span class="line"><span class="comment">    * allowMultiple	默认为false</span></span><br><span class="line"><span class="comment">    * hidden	隐藏该属性</span></span><br><span class="line"><span class="comment">    * example	举例子</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ResponseEntity&lt;String&gt; <span class="title">placeOrder</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">     @ApiParam(value = <span class="string">"xxxx"</span>, required = <span class="keyword">true</span>)</span> Person person) </span>&#123;</span><br><span class="line">   storeData.add(order);</span><br><span class="line">   <span class="keyword">return</span> ok(<span class="string">""</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Controler示例"><a href="#Controler示例" class="headerlink" title="Controler示例"></a>Controler示例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Api</span>(value = <span class="string">"Swagger 注解使用"</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"/postHello"</span>)</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * value               url的路径值</span></span><br><span class="line"><span class="comment">     * tags                如果设置这个值、value的值会被覆盖</span></span><br><span class="line"><span class="comment">     * description         对api资源的描述</span></span><br><span class="line"><span class="comment">     * basePath            基本路径可以不配置</span></span><br><span class="line"><span class="comment">     * position            如果配置多个Api 想改变显示的顺序位置</span></span><br><span class="line"><span class="comment">     * produces            例如, "application/json, application/xml"</span></span><br><span class="line"><span class="comment">     * consumes            例如, "application/json, application/xml"</span></span><br><span class="line"><span class="comment">     * protocols           Possible values: http, https, ws, wss.</span></span><br><span class="line"><span class="comment">     * authorizations      高级特性认证时配置</span></span><br><span class="line"><span class="comment">     * hidden              配置为true 将在文档中隐藏</span></span><br><span class="line"><span class="comment">     * response            返回的对象</span></span><br><span class="line"><span class="comment">     * responseContainer   这些对象是有效的 "List", "Set" or "Map".，其他无效</span></span><br><span class="line"><span class="comment">     * httpMethod  "GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS" and "PATCH"</span></span><br><span class="line"><span class="comment">     * code                http的状态码 默认 200</span></span><br><span class="line"><span class="comment">     * extensions          扩展属性</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ApiOperation</span>(</span><br><span class="line">            value = <span class="string">"post"</span>,</span><br><span class="line">            notes = <span class="string">"这是一个小demo"</span>,</span><br><span class="line">            produces = <span class="string">"application/json"</span>,</span><br><span class="line">            response = Person.class</span><br><span class="line">    )</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * code                http的状态码</span></span><br><span class="line"><span class="comment">     * message             描述</span></span><br><span class="line"><span class="comment">     * response            默认响应类 Void</span></span><br><span class="line"><span class="comment">     * reference           参考ApiOperation中配置</span></span><br><span class="line"><span class="comment">     * responseHeaders     参考 ResponseHeader 属性配置说明</span></span><br><span class="line"><span class="comment">     * responseContainer   参考ApiOperation中配置</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ApiResponses</span>(&#123;<span class="meta">@ApiResponse</span>(code = <span class="number">500</span>, message = <span class="string">"服务器内部错误"</span>, response = String.class)&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResponseEntity&lt;Person&gt; <span class="title">postHello</span><span class="params">(@RequestBody Person person)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ResponseEntity.ok(person);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/hello/&#123;name&#125;"</span>)</span><br><span class="line">    <span class="meta">@ApiOperation</span>(</span><br><span class="line">            value = <span class="string">"hello world"</span>,</span><br><span class="line">            notes = <span class="string">"这是一个小demo"</span></span><br><span class="line">    )</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@ApiImplicitParam</span></span></span><br><span class="line"><span class="comment">     * 当dataType不是对象时可以使用</span></span><br><span class="line"><span class="comment">     * paramType：参数放在哪个地方</span></span><br><span class="line"><span class="comment">     * name：参数代表的含义</span></span><br><span class="line"><span class="comment">     * value：参数名称</span></span><br><span class="line"><span class="comment">     * dataType： 参数类型，有String/int，无用</span></span><br><span class="line"><span class="comment">     * required ： 是否必要</span></span><br><span class="line"><span class="comment">     * defaultValue：参数的默认值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ApiImplicitParams</span>(</span><br><span class="line">            <span class="meta">@ApiImplicitParam</span>(value = <span class="string">"name"</span>,paramType =<span class="string">"path"</span>, dataType = <span class="string">"String"</span>,defaultValue = <span class="string">"world"</span>)</span><br><span class="line">    )</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">(@PathVariable String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello "</span> + name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Model示例"><a href="#Model示例" class="headerlink" title="Model示例"></a>Model示例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 描述一个Model的信息</span></span><br><span class="line"><span class="meta">@ApiModel</span></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="meta">@ApiModelProperty</span>(value = <span class="string">"姓名"</span>,name = <span class="string">"name"</span>)</span><br><span class="line">    String name;</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">    * name	属性名称</span></span><br><span class="line"><span class="hljs-comment">    * value	属性值</span></span><br><span class="line"><span class="hljs-comment">    * defaultValue	默认属性值</span></span><br><span class="line"><span class="hljs-comment">    * allowableValues	可以不配置</span></span><br><span class="line"><span class="hljs-comment">    * required	是否属性必填</span></span><br><span class="line"><span class="hljs-comment">    * access	不过多描述</span></span><br><span class="line"><span class="hljs-comment">    * allowMultiple	默认为false</span></span><br><span class="line"><span class="hljs-comment">    * hidden	隐藏该属性</span></span><br><span class="line"><span class="hljs-comment">    * example	举例子</span></span><br><span class="line"><span class="hljs-comment">    */</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> ResponseEntity&lt;String&gt; <span class="hljs-title">placeOrder</span><span class="hljs-params">(</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">     @ApiParam(value = <span class="hljs-string">"xxxx"</span>, required = <span class="hljs-keyword">true</span>)</span> Person person) </span>&#123;</span><br><span class="line">   storeData.add(order);</span><br><span class="line">   <span class="hljs-keyword">return</span> ok(<span class="hljs-string">""</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Controler示例"><a href="#Controler示例" class="headerlink" title="Controler示例"></a>Controler示例</h2><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Api</span>(value = <span class="hljs-string">"Swagger 注解使用"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@RestController</span></span><br><span class="line"><span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">"/"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoController</span> </span>&#123;</span><br><span class="line">    <span class="hljs-meta">@PostMapping</span>(<span class="hljs-string">"/postHello"</span>)</span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * value               url的路径值</span></span><br><span class="line"><span class="hljs-comment">     * tags                如果设置这个值、value的值会被覆盖</span></span><br><span class="line"><span class="hljs-comment">     * description         对api资源的描述</span></span><br><span class="line"><span class="hljs-comment">     * basePath            基本路径可以不配置</span></span><br><span class="line"><span class="hljs-comment">     * position            如果配置多个Api 想改变显示的顺序位置</span></span><br><span class="line"><span class="hljs-comment">     * produces            例如, "application/json, application/xml"</span></span><br><span class="line"><span class="hljs-comment">     * consumes            例如, "application/json, application/xml"</span></span><br><span class="line"><span class="hljs-comment">     * protocols           Possible values: http, https, ws, wss.</span></span><br><span class="line"><span class="hljs-comment">     * authorizations      高级特性认证时配置</span></span><br><span class="line"><span class="hljs-comment">     * hidden              配置为true 将在文档中隐藏</span></span><br><span class="line"><span class="hljs-comment">     * response            返回的对象</span></span><br><span class="line"><span class="hljs-comment">     * responseContainer   这些对象是有效的 "List", "Set" or "Map".，其他无效</span></span><br><span class="line"><span class="hljs-comment">     * httpMethod  "GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS" and "PATCH"</span></span><br><span class="line"><span class="hljs-comment">     * code                http的状态码 默认 200</span></span><br><span class="line"><span class="hljs-comment">     * extensions          扩展属性</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-meta">@ApiOperation</span>(</span><br><span class="line">            value = <span class="hljs-string">"post"</span>,</span><br><span class="line">            notes = <span class="hljs-string">"这是一个小demo"</span>,</span><br><span class="line">            produces = <span class="hljs-string">"application/json"</span>,</span><br><span class="line">            response = Person.class</span><br><span class="line">    )</span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * code                http的状态码</span></span><br><span class="line"><span class="hljs-comment">     * message             描述</span></span><br><span class="line"><span class="hljs-comment">     * response            默认响应类 Void</span></span><br><span class="line"><span class="hljs-comment">     * reference           参考ApiOperation中配置</span></span><br><span class="line"><span class="hljs-comment">     * responseHeaders     参考 ResponseHeader 属性配置说明</span></span><br><span class="line"><span class="hljs-comment">     * responseContainer   参考ApiOperation中配置</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-meta">@ApiResponses</span>(&#123;<span class="hljs-meta">@ApiResponse</span>(code = <span class="hljs-number">500</span>, message = <span class="hljs-string">"服务器内部错误"</span>, response = String.class)&#125;)</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ResponseEntity&lt;Person&gt; <span class="hljs-title">postHello</span><span class="hljs-params">(@RequestBody Person person)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> ResponseEntity.ok(person);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@GetMapping</span>(<span class="hljs-string">"/hello/&#123;name&#125;"</span>)</span><br><span class="line">    <span class="hljs-meta">@ApiOperation</span>(</span><br><span class="line">            value = <span class="hljs-string">"hello world"</span>,</span><br><span class="line">            notes = <span class="hljs-string">"这是一个小demo"</span></span><br><span class="line">    )</span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@ApiImplicitParam</span></span></span><br><span class="line"><span class="hljs-comment">     * 当dataType不是对象时可以使用</span></span><br><span class="line"><span class="hljs-comment">     * paramType：参数放在哪个地方</span></span><br><span class="line"><span class="hljs-comment">     * name：参数代表的含义</span></span><br><span class="line"><span class="hljs-comment">     * value：参数名称</span></span><br><span class="line"><span class="hljs-comment">     * dataType： 参数类型，有String/int，无用</span></span><br><span class="line"><span class="hljs-comment">     * required ： 是否必要</span></span><br><span class="line"><span class="hljs-comment">     * defaultValue：参数的默认值</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-meta">@ApiImplicitParams</span>(</span><br><span class="line">            <span class="hljs-meta">@ApiImplicitParam</span>(value = <span class="hljs-string">"name"</span>,paramType =<span class="hljs-string">"path"</span>, dataType = <span class="hljs-string">"String"</span>,defaultValue = <span class="hljs-string">"world"</span>)</span><br><span class="line">    )</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">hello</span><span class="hljs-params">(@PathVariable String name)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"hello "</span> + name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Model示例"><a href="#Model示例" class="headerlink" title="Model示例"></a>Model示例</h2><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 描述一个Model的信息</span></span><br><span class="line"><span class="hljs-meta">@ApiModel</span></span><br><span class="line"><span class="hljs-meta">@Getter</span></span><br><span class="line"><span class="hljs-meta">@Setter</span></span><br><span class="line"><span class="hljs-meta">@NoArgsConstructor</span></span><br><span class="line"><span class="hljs-meta">@AllArgsConstructor</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>&#123;</span><br><span class="line">    <span class="hljs-meta">@ApiModelProperty</span>(value = <span class="hljs-string">"姓名"</span>,name = <span class="hljs-string">"name"</span>)</span><br><span class="line">    String name;</span><br><span class="line">    <span class="hljs-keyword">int</span> age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="swagger汉化"><a href="#swagger汉化" class="headerlink" title="swagger汉化"></a>swagger汉化</h2><ol>
 <li><p>在resources资源下创建   <code>META-INF/resources</code> 文件夹并创建名为<code>swagger-ui.html</code>文件</p>
 </li>
 <li><p>复制以下内容：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Swagger UI<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"icon"</span> <span class="attr">type</span>=<span class="string">"image/png"</span> <span class="attr">href</span>=<span class="string">"webjars/springfox-swagger-ui/images/favicon-32x32.png"</span> <span class="attr">sizes</span>=<span class="string">"32x32"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"icon"</span> <span class="attr">type</span>=<span class="string">"image/png"</span> <span class="attr">href</span>=<span class="string">"webjars/springfox-swagger-ui/images/favicon-16x16.png"</span> <span class="attr">sizes</span>=<span class="string">"16x16"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">'webjars/springfox-swagger-ui/css/typography.css'</span> <span class="attr">media</span>=<span class="string">'screen'</span> <span class="attr">rel</span>=<span class="string">'stylesheet'</span> <span class="attr">type</span>=<span class="string">'text/css'</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">'webjars/springfox-swagger-ui/css/reset.css'</span> <span class="attr">media</span>=<span class="string">'screen'</span> <span class="attr">rel</span>=<span class="string">'stylesheet'</span> <span class="attr">type</span>=<span class="string">'text/css'</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">'webjars/springfox-swagger-ui/css/screen.css'</span> <span class="attr">media</span>=<span class="string">'screen'</span> <span class="attr">rel</span>=<span class="string">'stylesheet'</span> <span class="attr">type</span>=<span class="string">'text/css'</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">'webjars/springfox-swagger-ui/css/reset.css'</span> <span class="attr">media</span>=<span class="string">'print'</span> <span class="attr">rel</span>=<span class="string">'stylesheet'</span> <span class="attr">type</span>=<span class="string">'text/css'</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">'webjars/springfox-swagger-ui/css/print.css'</span> <span class="attr">media</span>=<span class="string">'print'</span> <span class="attr">rel</span>=<span class="string">'stylesheet'</span> <span class="attr">type</span>=<span class="string">'text/css'</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'webjars/springfox-swagger-ui/lib/object-assign-pollyfill.js'</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'webjars/springfox-swagger-ui/lib/jquery-1.8.0.min.js'</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'webjars/springfox-swagger-ui/lib/jquery.slideto.min.js'</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'webjars/springfox-swagger-ui/lib/jquery.wiggle.min.js'</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'webjars/springfox-swagger-ui/lib/jquery.ba-bbq.min.js'</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'webjars/springfox-swagger-ui/lib/handlebars-4.0.5.js'</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'webjars/springfox-swagger-ui/lib/lodash.min.js'</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'webjars/springfox-swagger-ui/lib/backbone-min.js'</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'webjars/springfox-swagger-ui/swagger-ui.min.js'</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'webjars/springfox-swagger-ui/lib/highlight.9.1.0.pack.js'</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'webjars/springfox-swagger-ui/lib/highlight.9.1.0.pack_extended.js'</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'webjars/springfox-swagger-ui/lib/jsoneditor.min.js'</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'webjars/springfox-swagger-ui/lib/marked.js'</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'webjars/springfox-swagger-ui/lib/swagger-oauth.js'</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'webjars/springfox-swagger-ui/springfox.js'</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 汉化 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'webjars/springfox-swagger-ui/lang/translator.js'</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'webjars/springfox-swagger-ui/lang/zh-cn.js'</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">class</span>=<span class="string">"swagger-section"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'header'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swagger-ui-wrap"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"logo"</span> <span class="attr">href</span>=<span class="string">"http://swagger.io"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"logo__img"</span> <span class="attr">alt</span>=<span class="string">"swagger"</span> <span class="attr">height</span>=<span class="string">"30"</span> <span class="attr">width</span>=<span class="string">"30"</span> <span class="attr">src</span>=<span class="string">"webjars/springfox-swagger-ui/images/logo_small.png"</span> /&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"logo__title"</span>&gt;</span>swagger<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">'api_selector'</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'input'</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"select_baseUrl"</span> <span class="attr">name</span>=<span class="string">"select_baseUrl"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'input'</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">"http://example.com/api"</span> <span class="attr">id</span>=<span class="string">"input_baseUrl"</span> <span class="attr">name</span>=<span class="string">"baseUrl"</span> <span class="attr">type</span>=<span class="string">"text"</span>/&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'auth_container'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'input'</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"explore"</span> <span class="attr">class</span>=<span class="string">"header__btn"</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-sw-translate</span>&gt;</span>Explore<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"message-bar"</span> <span class="attr">class</span>=<span class="string">"swagger-ui-wrap"</span> <span class="attr">data-sw-translate</span>&gt;</span>&amp;nbsp;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"swagger-ui-container"</span> <span class="attr">class</span>=<span class="string">"swagger-ui-wrap"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Swagger UI<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"webjars/springfox-swagger-ui/images/favicon-32x32.png"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"32x32"</span>/&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"webjars/springfox-swagger-ui/images/favicon-16x16.png"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"16x16"</span>/&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/css/typography.css'</span> <span class="hljs-attr">media</span>=<span class="hljs-string">'screen'</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">'stylesheet'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/css'</span>/&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/css/reset.css'</span> <span class="hljs-attr">media</span>=<span class="hljs-string">'screen'</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">'stylesheet'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/css'</span>/&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/css/screen.css'</span> <span class="hljs-attr">media</span>=<span class="hljs-string">'screen'</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">'stylesheet'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/css'</span>/&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/css/reset.css'</span> <span class="hljs-attr">media</span>=<span class="hljs-string">'print'</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">'stylesheet'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/css'</span>/&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/css/print.css'</span> <span class="hljs-attr">media</span>=<span class="hljs-string">'print'</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">'stylesheet'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/css'</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/lib/object-assign-pollyfill.js'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/lib/jquery-1.8.0.min.js'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/lib/jquery.slideto.min.js'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/lib/jquery.wiggle.min.js'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/lib/jquery.ba-bbq.min.js'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/lib/handlebars-4.0.5.js'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/lib/lodash.min.js'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/lib/backbone-min.js'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/swagger-ui.min.js'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/lib/highlight.9.1.0.pack.js'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/lib/highlight.9.1.0.pack_extended.js'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/lib/jsoneditor.min.js'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/lib/marked.js'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/lib/swagger-oauth.js'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/springfox.js'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-comment">&lt;!-- 汉化 --&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/lang/translator.js'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'webjars/springfox-swagger-ui/lang/zh-cn.js'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">body</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"swagger-section"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'header'</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"swagger-ui-wrap"</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"logo"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://swagger.io"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"logo__img"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"swagger"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"30"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"30"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"webjars/springfox-swagger-ui/images/logo_small.png"</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"logo__title"</span>&gt;</span>swagger<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'api_selector'</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">'input'</span>&gt;</span></span><br><span class="line">                <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"select_baseUrl"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"select_baseUrl"</span>/&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">'input'</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"http://example.com/api"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"input_baseUrl"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"baseUrl"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'auth_container'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">'input'</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"explore"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"header__btn"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">data-sw-translate</span>&gt;</span>Explore<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"message-bar"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"swagger-ui-wrap"</span> <span class="hljs-attr">data-sw-translate</span>&gt;</span>&amp;nbsp;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"swagger-ui-container"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"swagger-ui-wrap"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>访问即可</p>
 </li>
 </ol>
 
-      
+        </div>
+        
+        
+        
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/22/Spring boot 整合 Swagger/" data-id="cjr7vx4ic00032ktj6npnk5cw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019/01/22/设计模式之单例模式/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          设计模式之单例模式
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/01/22/阿里巴巴规约中自己没有做到的点/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">阿里巴巴规约中自己没有做到的点</div>
-    </a>
-  
-</nav>
+</div>
 
-  
-</article>
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
 
-  
-    
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
 
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
     </div>
-  </div>
+</div>
 
 
-  
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/01/22/设计模式之单例模式/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">设计模式之单例模式</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/22/阿里巴巴规约中自己没有做到的点/">
+                <span class="level-item">阿里巴巴规约中自己没有做到的点</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
         
-          <li>
-            <a href="/2019/01/22/MongoDB命令及其MongoTemplate的混合讲解/">MongoDB命令及其MongoTemplate的混合讲解</a>
-          </li>
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="WillVi">
+                    
+                    <p class="is-size-4 is-block">
+                        WillVi
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        笨要努力
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>重庆</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Entradas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        5
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categorias
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Etiquetas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/willvi">
+                SEGUIR</a>
+        </div>
         
-          <li>
-            <a href="/2019/01/22/SpringBoot与mongodb的结合/">SpringBoot与mongodb的结合</a>
-          </li>
         
-          <li>
-            <a href="/2019/01/22/设计模式之单例模式/">设计模式之单例模式</a>
-          </li>
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/willvi">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="http://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="http://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Dribbble" href="http://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
         
-          <li>
-            <a href="/2019/01/22/Spring boot 整合 Swagger/">Spring boot 整合 Swagger</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/22/阿里巴巴规约中自己没有做到的点/">阿里巴巴规约中自己没有做到的点</a>
-          </li>
-        
-      </ul>
     </div>
-  </div>
+</div>
+    
+        
+    
+        
 
-  
-</aside>
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
         
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
     </div>
-  </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categorias
+            </h3>
+            <ul class="menu-list">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recientes
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/01/22/MongoDB命令及其MongoTemplate的混合讲解/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="MongoDB命令及其MongoTemplate的混合讲解">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-22T14:56:32.000Z">2019-01-22</time></div>
+                    <a href="/2019/01/22/MongoDB命令及其MongoTemplate的混合讲解/" class="has-link-black-ter is-size-6">MongoDB命令及其MongoTemplate的混合讲解</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/22/SpringBoot与mongodb的结合/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="SpringBoot与mongodb的结合">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-22T14:56:32.000Z">2019-01-22</time></div>
+                    <a href="/2019/01/22/SpringBoot与mongodb的结合/" class="has-link-black-ter is-size-6">SpringBoot与mongodb的结合</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/22/设计模式之单例模式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="设计模式之单例模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-22T14:56:32.000Z">2019-01-22</time></div>
+                    <a href="/2019/01/22/设计模式之单例模式/" class="has-link-black-ter is-size-6">设计模式之单例模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/22/Spring boot 整合 Swagger/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring boot 整合 Swagger">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-22T14:56:32.000Z">2019-01-22</time></div>
+                    <a href="/2019/01/22/Spring boot 整合 Swagger/" class="has-link-black-ter is-size-6">Spring boot 整合 Swagger</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/22/阿里巴巴规约中自己没有做到的点/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="阿里巴巴规约中自己没有做到的点">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-22T14:56:32.000Z">2019-01-22</time></div>
+                    <a href="/2019/01/22/阿里巴巴规约中自己没有做到的点/" class="has-link-black-ter is-size-6">阿里巴巴规约中自己没有做到的点</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archivos
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Etiquetas
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recientes
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/01/22/MongoDB命令及其MongoTemplate的混合讲解/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="MongoDB命令及其MongoTemplate的混合讲解">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-22T14:56:32.000Z">2019-01-22</time></div>
+                    <a href="/2019/01/22/MongoDB命令及其MongoTemplate的混合讲解/" class="has-link-black-ter is-size-6">MongoDB命令及其MongoTemplate的混合讲解</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/22/SpringBoot与mongodb的结合/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="SpringBoot与mongodb的结合">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-22T14:56:32.000Z">2019-01-22</time></div>
+                    <a href="/2019/01/22/SpringBoot与mongodb的结合/" class="has-link-black-ter is-size-6">SpringBoot与mongodb的结合</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/22/设计模式之单例模式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="设计模式之单例模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-22T14:56:32.000Z">2019-01-22</time></div>
+                    <a href="/2019/01/22/设计模式之单例模式/" class="has-link-black-ter is-size-6">设计模式之单例模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/22/Spring boot 整合 Swagger/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring boot 整合 Swagger">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-22T14:56:32.000Z">2019-01-22</time></div>
+                    <a href="/2019/01/22/Spring boot 整合 Swagger/" class="has-link-black-ter is-size-6">Spring boot 整合 Swagger</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/22/阿里巴巴规约中自己没有做到的点/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="阿里巴巴规约中自己没有做到的点">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-22T14:56:32.000Z">2019-01-22</time></div>
+                    <a href="/2019/01/22/阿里巴巴规约中自己没有做到的点/" class="has-link-black-ter is-size-6">阿里巴巴规约中自己没有做到的点</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archivos
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Etiquetas
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Spring boot 整合 Swagger" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
 
 
-<script src="/js/script.js"></script>
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
 
 
+<script src="/js/main.js" defer></script>
 
-  </div>
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
 </body>
 </html>
